@@ -103,6 +103,7 @@ int main(int argc, char *argv[]) {
             fclose(fd);
         }
         if (pro.command == GETDIR) {
+            // printf("[%s]\n", pro.buf);
             FILE *fstream = NULL;
             int error = 0;
             if ((fstream = popen(pro.buf, "r")) == NULL) {

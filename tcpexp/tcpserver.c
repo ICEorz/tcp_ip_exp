@@ -54,8 +54,6 @@ int main(int argc, char **argv) {
 
         char recv_buf[512] = "";
         while (1) {
-            struct sockaddr_in client_addr;
-            socklen_t client_addr_len = sizeof(client_addr);
             int num = recv(connfd, (struct protocol *)&pro, sizeof(pro), 0);
             if (pro.command == DOWNLOAD) {
                 int a = access(pro.buf, F_OK);

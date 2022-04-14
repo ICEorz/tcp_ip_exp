@@ -9,7 +9,7 @@
 
 int main(int argc, char **argv) {
     unsigned short port = 8000;
-    char *server_ip = "192.168.43.33";
+    char *server_ip = "10.24.4.204";
     if (argc > 1) {
         server_ip = argv[1];
     }
@@ -42,6 +42,7 @@ int main(int argc, char **argv) {
         int i;
         printf("option:");
         scanf("%d", &i);
+        getchar();
         //DOWNLOAD
         if (i == 1) {
             printf("filename:");
@@ -115,7 +116,7 @@ int main(int argc, char **argv) {
         if (i == 3) {
             bzero(&pro.buf, BUFLEN);
             pro.command = GETDIR;
-            scanf("%s", pro.buf);
+            fgets(pro.buf, sizeof(pro.buf), stdin);
             send(sockfd, (struct protocol *)&pro, sizeof(pro), 0);
             num = recv(sockfd, (struct protocol *)&pro, sizeof(pro), 0);
             if (pro.command == START) {
